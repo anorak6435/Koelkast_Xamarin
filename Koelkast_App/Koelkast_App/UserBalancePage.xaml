@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Koelkast_App.UserBalancePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="Drank voorraad" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <StackLayout Orientation="Horizontal" Margin="0, 10">
+                <Button Text="Settings" HorizontalOptions="FillAndExpand"/>
+                <Button Text="Logout" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Label Text="Huidige balans:" FontSize="24" HorizontalTextAlignment="Center" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
