@@ -20,7 +20,16 @@ namespace Koelkast_App
         private async void BtnLoggingIn_Clicked(object sender, EventArgs e)
         {
             // TODO: check the user entered valid credentials
-            await Navigation.PushAsync(new UserBalancePage());
+            string username = userNameEntry.Text;
+            string password = passwordEntry.Text;
+            if (username == "prins" && password == "pils")
+            {
+                await Navigation.PushAsync(new HomePage());
+            }
+            else
+            {
+                DisplayAlert("Login clicked", "Don't you dare take my password!", "try again", "Cancel");
+            }
         }
     }
 }

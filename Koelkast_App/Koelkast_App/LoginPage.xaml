@@ -4,20 +4,10 @@
              x:Class="Koelkast_App.LoginPage">
     <ContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-                <Label Text="Drank voorraad" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Frame Padding="24" CornerRadius="0">
+                <Label Text="Drank voorraad" HorizontalTextAlignment="Center" FontSize="36"/>
             </Frame>
-            <Label Text="Login" FontSize="24" HorizontalTextAlignment="Center" TextColor="Black"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="GNaam:" TextColor="Black" VerticalTextAlignment="Center"/>
-                <Entry x:Name="userNameEntry"  Placeholder="Gebruikersnaam"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Wachtwoord:" TextColor="Black" VerticalTextAlignment="Center"/>
-                <Entry x:Name="passwordEntry" Placeholder="Wachtwoord"/>
-            </StackLayout>
-            <!--Also tried grid layout-->
-            <Label Text="Login" FontSize="24" HorizontalTextAlignment="Center" TextColor="Black"/>
+            <Label Text="Login" FontSize="24" HorizontalTextAlignment="Center"/>
             <Grid Margin="20,0,20,10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
@@ -27,12 +17,13 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="GNaam:" Grid.Row="0" Grid.Column="0" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
-                <Entry x:Name="userNameEntry1" Placeholder="Gebruikersnaam" Grid.Row="0" Grid.Column="1"/>
-                <Label Text="Wachtwoord:" Grid.Row="1" Grid.Column="0" TextColor="Black" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
-                <Entry x:Name="passwordEntry1" Placeholder="Wachtwoord ****" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="GNaam:" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="userNameEntry" Placeholder="Gebruikersnaam" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Wachtwoord:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="passwordEntry" Placeholder="Wachtwoord ****" Grid.Row="1" Grid.Column="1" IsPassword="True"/>
             </Grid>
-            
+            <Label
+               VerticalOptions="CenterAndExpand" />
             <Button x:Name="BtnLoggingIn" Text="Login" Margin="20, 10" Clicked="BtnLoggingIn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

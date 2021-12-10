@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:Koelkast_App"
+             x:Class="Koelkast_App.HomePage"
+            NavigationPage.HasBackButton="False"
+            BarBackgroundColor="{StaticResource BannerBackground}">
+    <NavigationPage.TitleView>
+        <Label Text="Drank voorraad" HorizontalTextAlignment="Center" FontSize="36"/>
+    </NavigationPage.TitleView>
+    <!--Pages can be added as references or inline-->
+    <local:HomeFunctionsOverview Title="Home"/>
+    <local:GeneralSettingsPage Title="Settings"/>
+</TabbedPage>

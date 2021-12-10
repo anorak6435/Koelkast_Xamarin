@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Koelkast_App.AddDrinkPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Drankje kiezen" FontSize="18"
+                HorizontalOptions="CenterAndExpand" />
+        
+
+            <StackLayout Orientation="Horizontal" Margin="0, 10">
+                <Button Text="Logout" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <Button Text="Welk product selecteerd U?"/>
+
+            <Entry x:Name="Numbers" Placeholder="# Aantal:"/>
+            <Button x:Name="AddDrinkButton" Text="Add drink" Clicked="AddDrinkButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

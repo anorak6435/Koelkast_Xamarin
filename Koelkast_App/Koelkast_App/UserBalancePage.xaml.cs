@@ -16,5 +16,15 @@ namespace Koelkast_App
         {
             InitializeComponent();
         }
+
+        private async void Settings_Btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new GeneralSettingsPage());
+        }
+
+        private async void Logout_Btn_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
     }
 }

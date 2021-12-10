@@ -4,11 +4,35 @@
              x:Class="Koelkast_App.RegisterPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Drank voorraad"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            
-            
+            <Frame Padding="24" CornerRadius="0">
+                <Label Text="Drank voorraad" HorizontalTextAlignment="Center" FontSize="36"/>
+            </Frame>
+            <Label Text="Register" FontSize="24" HorizontalTextAlignment="Center"/>
+            <Grid Margin="20,0,20,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Email:" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="RegisterEmail" Placeholder="Email" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Naam:" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="RegisterUserName" Placeholder="Gebruikersnaam" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="Wachtwoord:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="RegisterPassword" Placeholder="Wachtwoord" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Wachtwoord:" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="End"/>
+                <Entry x:Name="RegisterPasswordRepeat" Placeholder="Opnieuw Wachtwoord" Grid.Row="3" Grid.Column="1"/>
+                <Label Margin="32, 0" Text="Onthoud mij" VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="1"/>
+                <CheckBox x:Name="rememberMe" IsChecked="True" Grid.Row="4" Grid.Column="0"/>
+            </Grid>
+            <Button x:Name="RegistreerBtn" Text="Registreer" Clicked="RegistreerBtn_Clicked"/>
+            <Button x:Name="DeveloperLogin" Text="DeveloperLogin" Clicked="DeveloperLogin_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
