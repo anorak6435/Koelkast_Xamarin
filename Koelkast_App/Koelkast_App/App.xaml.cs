@@ -6,10 +6,18 @@ namespace Koelkast_App
 {
     public partial class App : Application
     {
+        public static string DatabaseLocation = string.Empty;
         public App()
         {
             InitializeComponent();
 
+            MainPage = new NavigationPage(new MainPage());
+        }
+
+        public App(string dbloc)
+        {
+            InitializeComponent();
+            DatabaseLocation = dbloc;
             MainPage = new NavigationPage(new MainPage());
         }
 
