@@ -30,5 +30,10 @@
             <Setter Property="BackgroundColor"
                     Value="{StaticResource Background}"/>
         </Style>
+
+        <Style x:Key="MidEndEntry" TargetType="Label">
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+        </Style>
     </Application.Resources>
 </Application>
