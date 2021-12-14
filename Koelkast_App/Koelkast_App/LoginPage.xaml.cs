@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,17 +20,30 @@ namespace Koelkast_App
 
         private async void BtnLoggingIn_Clicked(object sender, EventArgs e)
         {
-            // TODO: check the user entered valid credentials
-            string username = userNameEntry.Text;
-            string password = passwordEntry.Text;
-            if (username == "prins" && password == "pils")
+            if (this.IsValidUserData(userNameEntry.Text, passwordEntry.Text))
             {
                 await Navigation.PushAsync(new HomePage());
             }
-            else
+        }
+
+        // make sure the user information given is right
+        private bool IsValidUserData(string Username, string Password)
+        {
+            List<Model.User> DBUserList;
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
-                DisplayAlert("Login clicked", "Don't you dare take my password!", "try again", "Cancel");
+                con.CreateTable<Model.User>();
+                DBUserList = con.Table<Model.User>().Where(x => x.Name == Username && x.Password == Password).ToList();
             }
+
+            // check if the username passwordcombo was found in the database
+            if (DBUserList.Count < 1)
+            {
+                _ = DisplayAlert("Credentials not matching!", "We vonden deze Gebruikersnaam Wachtwoord combinatie niet!", "Check info");
+                return false;
+            }
+
+            return true;
         }
     }
 }
