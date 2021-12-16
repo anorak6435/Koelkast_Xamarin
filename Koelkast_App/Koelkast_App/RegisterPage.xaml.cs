@@ -24,12 +24,12 @@ namespace Koelkast_App
             if (this.CheckNewUserData())
             {
                 // make a new user from the input in the forms
-                this.BuildUser();
-                Navigation.PushAsync(new HomePage());
+                Model.User usr = this.BuildUser();
+                Navigation.PushAsync(new HomePage(usr));
             }
         }
 
-        private void BuildUser()
+        private Model.User BuildUser()
         {
             // the new user is allowed by the rules we have on the register form
 
@@ -54,6 +54,7 @@ namespace Koelkast_App
             {
                 _ = DisplayAlert("Error!", "Er is een fout opgetreden bij het toevoegen van de nieuwe gebruiker. Controleer uw informatie", "Okay");
             }
+            return usr;
         }
 
         private bool CheckNewUserData()
@@ -85,7 +86,15 @@ namespace Koelkast_App
 
         private void DeveloperLogin_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new HomePage());
+            Model.User usr = new Model.User();
+            usr.Language = "NL"; // TODO: When handling multiple language requirements make it connected to the app variable like the DatabaseLocation string
+            usr.Balance = 0; // the balance of new users starts at 0
+            usr.Name = "Stefan";
+            usr.Email = "stefan.beckers14@gmail.com";
+            usr.Password = "passworddata";
+            usr.ThemeColor = "#00ff00"; // TODO: Just like with the language property take the general setting the user has selected.
+
+            Navigation.PushAsync(new HomePage(usr));
         }
     }
 }

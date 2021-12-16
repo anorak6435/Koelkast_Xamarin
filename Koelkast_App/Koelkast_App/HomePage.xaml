@@ -10,5 +10,6 @@
     </NavigationPage.TitleView>
     <!--Pages can be added as references or inline-->
     <local:HomeFunctionsOverview Title="Home"/>
+    <local:cocktail_overview Title="CocktailAPI"/>
     <local:GeneralSettingsPage Title="Settings"/>
 </TabbedPage>

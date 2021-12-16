@@ -22,7 +22,13 @@ namespace Koelkast_App
         {
             if (this.IsValidUserData(userNameEntry.Text, passwordEntry.Text))
             {
-                await Navigation.PushAsync(new HomePage());
+                List<Model.User> DBUserList;
+                using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+                {
+                    con.CreateTable<Model.User>();
+                    DBUserList = con.Table<Model.User>().Where(x => x.Name == userNameEntry.Text && x.Password == passwordEntry.Text).ToList();
+                }
+                await Navigation.PushAsync(new HomePage(DBUserList[0]));
             }
         }
 

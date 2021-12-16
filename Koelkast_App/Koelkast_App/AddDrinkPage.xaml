@@ -15,6 +15,7 @@
             <Button Text="Welk product selecteerd U?"/>
 
             <Entry x:Name="Numbers" Placeholder="# Aantal:"/>
+            
             <Button x:Name="AddDrinkButton" Text="Add drink" Clicked="AddDrinkButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

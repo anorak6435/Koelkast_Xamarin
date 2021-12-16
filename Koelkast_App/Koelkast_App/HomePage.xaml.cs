@@ -12,9 +12,12 @@ namespace Koelkast_App
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : TabbedPage
     {
-        public HomePage()
+        private Model.User currentUser;
+        public HomePage(Model.User usr)
         {
+            // get the user from the model from the 
             InitializeComponent();
+            currentUser = usr;
         }
     }
 }
