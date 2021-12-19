@@ -12,11 +12,11 @@
                 <Button Text="Logout" HorizontalOptions="EndAndExpand"/>
             </StackLayout>
 
-            <Button Text="Welk product selecteerd U?"/>
+            <Picker x:Name="BeerPicker" TextColor="{StaticResource Primary}"/>
 
-            <Entry x:Name="Numbers" Placeholder="# Aantal:"/>
+            <Entry x:Name="Numbers" Placeholder="# Aantal:" TextColor="{StaticResource Primary}"/>
             
-            <Button x:Name="AddDrinkButton" Text="Add drink" Clicked="AddDrinkButton_Clicked"/>
+            <Button x:Name="TakeDrink" Text="Neem uit koelkast" Clicked="TakeDrink_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

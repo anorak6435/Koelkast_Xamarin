@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using System.IO;
+using Android.Views;
 
 namespace Koelkast_App.Droid
 {
@@ -17,7 +18,7 @@ namespace Koelkast_App.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-
+            Window?.AddFlags(WindowManagerFlags.Fullscreen);
             string dbName = "fridgeDB.sqlite";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string fullPath = Path.Combine(folderPath, dbName);

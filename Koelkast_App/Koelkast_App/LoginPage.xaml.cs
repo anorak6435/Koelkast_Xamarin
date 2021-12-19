@@ -20,36 +20,42 @@ namespace Koelkast_App
 
         private async void BtnLoggingIn_Clicked(object sender, EventArgs e)
         {
-            if (this.IsValidUserData(userNameEntry.Text, passwordEntry.Text))
+            string Username = userNameEntry.Text;
+            string Password = passwordEntry.Text;
+            if (this.IsValidUserData(Username, Password))
             {
                 List<Model.User> DBUserList;
                 using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
                 {
                     con.CreateTable<Model.User>();
-                    DBUserList = con.Table<Model.User>().Where(x => x.Name == userNameEntry.Text && x.Password == passwordEntry.Text).ToList();
+                    DBUserList = con.Table<Model.User>().Where(x => x.Name == Username && x.Password == Password).ToList();
                 }
                 await Navigation.PushAsync(new HomePage(DBUserList[0]));
             }
         }
-
-        // make sure the user information given is right
         private bool IsValidUserData(string Username, string Password)
         {
+            Model.User searchUser = new Model.User();
+            searchUser.Name = Username;
+            searchUser.Password = Password;
             List<Model.User> DBUserList;
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
             {
                 con.CreateTable<Model.User>();
-                DBUserList = con.Table<Model.User>().Where(x => x.Name == Username && x.Password == Password).ToList();
+                DBUserList = con.Table<Model.User>()
+                                .Where(tableUser => tableUser.Name == Username && tableUser.Password == Password)
+                                .ToList();
             }
 
-            // check if the username passwordcombo was found in the database
+            // Display an alert if the username password were found in less than 1 user in the database
             if (DBUserList.Count < 1)
             {
                 _ = DisplayAlert("Credentials not matching!", "We vonden deze Gebruikersnaam Wachtwoord combinatie niet!", "Check info");
                 return false;
+            } else
+            {
+                return true;
             }
-
-            return true;
         }
     }
 }

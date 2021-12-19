@@ -26,5 +26,10 @@ namespace Koelkast_App
         {
             await Navigation.PushAsync(new profilePage());
         }
+
+        private async void Stock_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new StockOverviewPage());
+        }
     }
 }

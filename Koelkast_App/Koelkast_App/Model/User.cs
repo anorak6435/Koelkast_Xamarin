@@ -24,5 +24,7 @@ namespace Koelkast_App.Model
 
         [MaxLength(7)] //colors will be the strings "#ffffff"
         public string ThemeColor { get; set; }
+
+        public string FavoriteDrink { get; set; }
     }
 }

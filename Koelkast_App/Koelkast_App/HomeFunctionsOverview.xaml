@@ -6,7 +6,7 @@
         <StackLayout Margin="10, 0">
             <Button x:Name="ChooseDrink" Text="Drankje kiezen" Clicked="ChooseDrink_Clicked"/>
             <Button x:Name="Personalinfo" Text="Persoonlijke info" Clicked="Personalinfo_Clicked"/>
-            <Button x:Name="Stock" Text="Stock"/>
+            <Button x:Name="Stock" Text="Stock" Clicked="Stock_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
