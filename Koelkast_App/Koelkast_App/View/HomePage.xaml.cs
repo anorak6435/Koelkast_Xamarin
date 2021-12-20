@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Koelkast_App
+namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : TabbedPage
     {
-        private Model.User currentUser;
-        public HomePage(Model.User usr)
+        public HomePage()
         {
-            // get the user from the model from the 
             InitializeComponent();
-            currentUser = usr;
         }
     }
 }

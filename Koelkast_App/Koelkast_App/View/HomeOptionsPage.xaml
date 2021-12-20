@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Koelkast_App"
+             x:Class="Koelkast_App.View.HomeOptionsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Hier gaan de hoofdfuncties van de app komen."
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ImageButton Source="{local:ImageResource Koelkast_App.images.koelkast.png}" WidthRequest="100" HeightRequest="150" HorizontalOptions="End" BackgroundColor="Transparent"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

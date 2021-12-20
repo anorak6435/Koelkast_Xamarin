@@ -22,9 +22,12 @@ namespace Koelkast_App.Model
 
         public string Language { get; set; }
 
-        [MaxLength(7)] //colors will be the strings "#ffffff"
+        [MaxLength(6)] //colors will be the strings "ffffff" RRGGBB
         public string ThemeColor { get; set; }
 
         public string FavoriteDrink { get; set; }
+
+        // is this the user that will be logged in automatically
+        public bool Remembered { get; set; }
     }
 }

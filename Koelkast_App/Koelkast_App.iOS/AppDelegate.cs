@@ -25,7 +25,7 @@ namespace Koelkast_App.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             string dbName = "fridgeDB.sqlite";
-            string folderPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "..", "Library");
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Library");
             string fullPath = Path.Combine(folderPath, dbName);
             LoadApplication(new App(fullPath));
 

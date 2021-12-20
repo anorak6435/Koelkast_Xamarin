@@ -20,12 +20,12 @@ namespace Koelkast_App
         private void RegistreerBtn_Clicked(object sender, EventArgs e)
         {
             //check that the data entered in the register form is correct.
-            if (this.CheckNewUserData())
-            {
-                // make a new user from the input in the forms
-                Model.User usr = this.BuildUser();
-                Navigation.PushAsync(new HomePage(usr));
-            }
+            //if (this.CheckNewUserData())
+            //{
+            //    // make a new user from the input in the forms
+            //    Model.User usr = this.BuildUser();
+            //    Navigation.PushAsync(new HomePage(usr));
+            //}
         }
 
         private Model.User BuildUser()
@@ -93,7 +93,7 @@ namespace Koelkast_App
             usr.Password = "passworddata";
             usr.ThemeColor = "#00ff00"; // TODO: Just like with the language property take the general setting the user has selected.
 
-            Navigation.PushAsync(new HomePage(usr));
+            // Navigation.PushAsync(new HomePage(usr));
         }
     }
 }

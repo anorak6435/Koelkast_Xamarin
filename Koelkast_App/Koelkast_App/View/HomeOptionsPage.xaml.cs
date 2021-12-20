@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Koelkast_App
+namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StockOverviewPage : ContentPage
+    public partial class HomeOptionsPage : ContentPage
     {
-        public StockOverviewPage()
+        public HomeOptionsPage()
         {
             InitializeComponent();
         }
