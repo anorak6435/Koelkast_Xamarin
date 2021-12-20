@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Koelkast_App
+namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ForgotPasswordPage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public ForgotPasswordPage()
+        public SettingsPage()
         {
             InitializeComponent();
-        }
-
-        private void SendMailBtn_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

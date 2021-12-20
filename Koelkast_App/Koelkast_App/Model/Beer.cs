@@ -13,6 +13,8 @@ namespace Koelkast_App.Model
         [MaxLength(100)]
         public string Name { get; set; }
 
+        public int State { get; set; }
+
         public int Cost { get; set; }
     }
 }

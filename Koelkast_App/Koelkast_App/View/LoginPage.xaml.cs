@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Koelkast_App
+namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
@@ -18,21 +18,21 @@ namespace Koelkast_App
             InitializeComponent();
         }
 
-        private async void BtnLoggingIn_Clicked(object sender, EventArgs e)
-        {
-            string Username = userNameEntry.Text;
-            string Password = passwordEntry.Text;
-            if (this.IsValidUserData(Username, Password))
-            {
-                List<Model.User> DBUserList;
-                using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
-                {
-                    con.CreateTable<Model.User>();
-                    DBUserList = con.Table<Model.User>().Where(x => x.Name == Username && x.Password == Password).ToList();
-                }
-                await Navigation.PushAsync(new HomePage(DBUserList[0]));
-            }
-        }
+        //private async void BtnLoggingIn_Clicked(object sender, EventArgs e)
+        //{
+        //    string Username = userNameEntry.Text;
+        //    string Password = passwordEntry.Text;
+        //    if (this.IsValidUserData(Username, Password))
+        //    {
+        //        List<Model.User> DBUserList;
+        //        using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+        //        {
+        //            con.CreateTable<Model.User>();
+        //            DBUserList = con.Table<Model.User>().Where(x => x.Name == Username && x.Password == Password).ToList();
+        //        }
+        //        await Navigation.PushAsync(new HomePage(DBUserList[0]));
+        //    }
+        //}
         private bool IsValidUserData(string Username, string Password)
         {
             Model.User searchUser = new Model.User();

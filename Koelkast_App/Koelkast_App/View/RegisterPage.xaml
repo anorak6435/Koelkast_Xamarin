@@ -7,7 +7,6 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            
             <Label Text="Register" FontSize="24" HorizontalTextAlignment="Center"/>
             <Grid Margin="20,0,20,10">
                 <Grid.RowDefinitions>
