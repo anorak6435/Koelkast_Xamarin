@@ -7,19 +7,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Koelkast_App.View
+namespace Koelkast_App
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomeOptionsPage : ContentPage
+    public partial class RootPage : ContentPage
     {
-        public HomeOptionsPage()
+        public RootPage()
         {
             InitializeComponent();
-        }
-
-        private void AddKindOfDrink_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddKindOfDrinkPage());
+            Navigation.PushAsync(new View.HomePage());
         }
     }
 }

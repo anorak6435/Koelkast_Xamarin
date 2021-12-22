@@ -11,6 +11,8 @@ namespace Koelkast_App.Model
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        public string DrinkName { get; set; }
+        public string Name { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }
