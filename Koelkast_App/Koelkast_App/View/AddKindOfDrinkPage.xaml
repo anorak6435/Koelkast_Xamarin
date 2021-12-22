@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Koelkast_App"
              x:Class="Koelkast_App.View.AddKindOfDrinkPage">
     <NavigationPage.TitleView>
         <Label Text="Koelkast" HorizontalTextAlignment="Center" FontSize="36"/>
@@ -12,6 +13,7 @@
         <Grid Padding="10, 20, 10, 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
@@ -21,10 +23,11 @@
             </Grid.ColumnDefinitions>
             <Label Text="Naam" Grid.Row="0" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
             <Entry x:Name="DrinkEntry" Placeholder="Drankjes Naam" Grid.Row="0" Grid.Column="1"/>
-            
-            <Button Text="Voeg Foto Toe" Grid.Row="1" Grid.Column="1"/>
 
-            <Button x:Name="BtnAddDrinkKind" Text="Voeg dranksoort toe" Grid.Column="1" Grid.Row="2" />
+            <Image x:Name="LoadedImage" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Source="{local:ImageResource Koelkast_App.images.no-image.png}" HorizontalOptions="Center"/>
+            <Button x:Name="AddPicture" Text="Voeg Foto Toe" Grid.Row="2" Grid.Column="1" Clicked="AddPicture_Clicked"/>
+
+            <Button x:Name="BtnAddDrinkKind" Text="Voeg dranksoort toe" Grid.Row="3" Grid.Column="1" Clicked="BtnAddDrinkKind_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Remove="images\aflighem.png" />
     <None Remove="images\brugse_zot.png" />
+    <None Remove="images\no-image.png" />
   </ItemGroup>
 
 
@@ -20,6 +21,7 @@
     <EmbeddedResource Include="images\aflighem.png" />
     <EmbeddedResource Include="images\brugse_zot.png" />
     <EmbeddedResource Include="images\koelkast.png" />
+    <EmbeddedResource Include="images\no-image.png" />
   </ItemGroup>
 
   <ItemGroup>
