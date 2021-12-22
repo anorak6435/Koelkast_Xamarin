@@ -5,6 +5,7 @@
              x:Class="Koelkast_App.View.HomeOptionsPage">
     <ContentPage.Content>
         <StackLayout>
+            <Button x:Name="AddKindOfDrink" Text="Nieuw drankje toevoegen" Clicked="AddKindOfDrink_Clicked"/>
             <Label Text="Hier gaan de hoofdfuncties van de app komen."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomeOptionsPage : ContentPage
+    public partial class AddKindOfDrinkPage : ContentPage
     {
-        public HomeOptionsPage()
+        public AddKindOfDrinkPage()
         {
             InitializeComponent();
-        }
-
-        private void AddKindOfDrink_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddKindOfDrinkPage());
         }
     }
 }

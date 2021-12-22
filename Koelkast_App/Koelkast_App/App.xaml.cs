@@ -11,14 +11,14 @@ namespace Koelkast_App
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new View.HomePage());
+            MainPage = new NavigationPage(new RootPage());
         }
 
         public App(string dbloc)
         {
             InitializeComponent();
             DatabaseLocation = dbloc;
-            MainPage = new NavigationPage(new View.HomePage());
+            MainPage = new NavigationPage(new RootPage());
         }
 
         protected override void OnStart()
