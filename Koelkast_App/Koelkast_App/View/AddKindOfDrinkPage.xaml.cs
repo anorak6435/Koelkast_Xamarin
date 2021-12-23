@@ -1,4 +1,4 @@
-﻿using SQLite;
+﻿using Koelkast_App.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,10 +33,16 @@ namespace Koelkast_App.View
                 Title = "Kies uw foto"
             });
 
-            imagePath = result.FullPath;
-            
-            var stream = await result.OpenReadAsync();
-            LoadedImage.Source = ImageSource.FromStream(() => stream);
+            if (result.FullPath is null)
+            {
+                _ = DisplayAlert("Waarschuwing!", "Geen afbeelding ontvangen!", "terug");
+            } else
+            {
+                imagePath = result.FullPath;
+
+                var stream = await result.OpenReadAsync();
+                LoadedImage.Source = ImageSource.FromStream(() => stream);
+            }
         }
 
         /// <summary>
@@ -48,25 +54,24 @@ namespace Koelkast_App.View
         {
             Model.Drink DrinkInsert = new Model.Drink();
 
-            DrinkInsert.Name = DrinkEntry.Text;
-            DrinkInsert.ImagePath = imagePath;
-
-            int ins_rows = -1;
-            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            if (string.IsNullOrEmpty(DrinkEntry.Text))
             {
-                con.CreateTable<Model.Drink>();
-                ins_rows = con.Insert(DrinkInsert);
-            }
-
-            if (ins_rows > 0)
-            {
-                _ = DisplayAlert("Succes", "Nieuwe soort drank toegevoegd aan de database.", "Oke");
+                _ = DisplayAlert("Naam waarschuwing!", "Er is geen naam gegeven aan de onderdelen van de code!", "vul in");
             } else
             {
-                _ = DisplayAlert("Waarschuwing!", "Toevoegen mislukt!", "Oke");
-            }
+                int ins_rows = DrinkService.Insert(DrinkEntry.Text, imagePath);
 
-            await Navigation.PopAsync();
+                if (ins_rows > 0)
+                {
+                    _ = DisplayAlert("Succes", "Nieuwe soort drank toegevoegd aan de database.", "Oke");
+                }
+                else
+                {
+                    _ = DisplayAlert("Waarschuwing!", "Toevoegen mislukt!", "Oke");
+                }
+
+                await Navigation.PopAsync();
+            }
         }
     }
 }
