@@ -33,9 +33,9 @@ namespace Koelkast_App.View
                 Title = "Kies uw foto"
             });
 
-            if (result.FullPath is null)
+            if (result is null)
             {
-                _ = DisplayAlert("Waarschuwing!", "Geen afbeelding ontvangen!", "terug");
+                _ = DisplayAlert("Let Op!", "Geen afbeelding ontvangen!", "terug");
             } else
             {
                 imagePath = result.FullPath;
@@ -52,22 +52,33 @@ namespace Koelkast_App.View
         /// <param name="e"></param>
         private async void BtnAddDrinkKind_Clicked(object sender, EventArgs e)
         {
-            Model.Drink DrinkInsert = new Model.Drink();
-
             if (string.IsNullOrEmpty(DrinkEntry.Text))
             {
                 _ = DisplayAlert("Naam waarschuwing!", "Er is geen naam gegeven aan de onderdelen van de code!", "vul in");
             } else
             {
-                int ins_rows = DrinkService.Insert(DrinkEntry.Text, imagePath);
+                // default values for stock and cost given new products
+                int stock = 1;
+                int cost = 1;
+                if (!string.IsNullOrEmpty(StockEntry.Text))
+                {
+                    // when stock given.
+                    stock = int.Parse(StockEntry.Text);
+                }
+                if (!string.IsNullOrEmpty(CostEntry.Text))
+                {
+                    // when cost given.
+                    cost = int.Parse(CostEntry.Text);
+                }
+                int ins_rows = DrinkService.Insert(DrinkEntry.Text, imagePath, cost, stock);
 
                 if (ins_rows > 0)
                 {
-                    _ = DisplayAlert("Succes", "Nieuwe soort drank toegevoegd aan de database.", "Oke");
+                    _ = DisplayAlert("Succes!", "Nieuwe soort drank toegevoegd aan de database.", "Verder");
                 }
                 else
                 {
-                    _ = DisplayAlert("Waarschuwing!", "Toevoegen mislukt!", "Oke");
+                    _ = DisplayAlert("Let op!", "Toevoegen mislukt!", "Verder");
                 }
 
                 await Navigation.PopAsync();

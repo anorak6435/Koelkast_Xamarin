@@ -17,9 +17,14 @@ namespace Koelkast_App.View
             InitializeComponent();
         }
 
-        private void AddKindOfDrink_Clicked(object sender, EventArgs e)
+        private async void AddKindOfDrink_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddKindOfDrinkPage());
+            await Navigation.PushAsync(new AddKindOfDrinkPage());
+        }
+
+        private async void ListKindOfDrinks_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ListKindOfDrinkPage());
         }
     }
 }
