@@ -16,6 +16,8 @@
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -27,7 +29,12 @@
             <Image x:Name="LoadedImage" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" Source="{local:ImageResource Koelkast_App.images.no-image.png}" HorizontalOptions="Center"/>
             <Button x:Name="AddPicture" Text="Voeg Foto Toe" Grid.Row="2" Grid.Column="1" Clicked="AddPicture_Clicked"/>
 
-            <Button x:Name="BtnAddDrinkKind" Text="Voeg dranksoort toe" Grid.Row="3" Grid.Column="1" Clicked="BtnAddDrinkKind_Clicked" />
+            <Label Text="Waarde" Grid.Row="3" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
+            <Entry x:Name="CostEntry" Placeholder="1" Grid.Row="3" Grid.Column="1"/>
+            <Label Text="Voorraad" Grid.Row="4" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
+            <Entry x:Name="StockEntry" Placeholder="1" Grid.Row="4" Grid.Column="1"/>
+
+            <Button x:Name="BtnAddDrinkKind" Text="Voeg dranksoort toe" Grid.Row="5" Grid.Column="1" Clicked="BtnAddDrinkKind_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -5,7 +5,12 @@
              x:Class="Koelkast_App.View.HomeOptionsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="AddKindOfDrink" Text="Nieuw drankje toevoegen" Clicked="AddKindOfDrink_Clicked"/>
+            <Label Text="Dranksoorten" FontSize="15" Margin="0, 5"/>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="AddKindOfDrink" Text="Nieuwe soort" Clicked="AddKindOfDrink_Clicked"/>
+                <Button x:Name="ListKindOfDrinks" Text="Lijst aan soorten" Clicked="ListKindOfDrinks_Clicked"/>
+            </StackLayout>
+            
             <Label Text="Hier gaan de hoofdfuncties van de app komen."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

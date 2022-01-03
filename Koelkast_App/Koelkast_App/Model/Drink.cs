@@ -14,5 +14,9 @@ namespace Koelkast_App.Model
         public string Name { get; set; }
 
         public string ImagePath { get; set; }
+
+        public int Cost { get; set; }
+
+        public int InStock { get; set; }
     }
 }
