@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Koelkast_App.Services;
 
 namespace Koelkast_App.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListKindOfDrinkPage : ContentPage
     {
+        List<Model.Drink> drinks;
         public ListKindOfDrinkPage()
         {
             InitializeComponent();
-            
-            // the grid that will contain the information of the
-
             //get the drinks from the database
-            List<Model.Drink> drinks = Services.DrinkService.GetAllDrinks();
-            
+            drinks = DrinkService.GetAllDrinks();
+        }
 
+        protected override void OnAppearing()
+        {   
             foreach (Model.Drink drink in drinks)
             {
                 // keep track of a 
@@ -136,8 +137,9 @@ namespace Koelkast_App.View
         {
             //TODO Call an confirmation page before removing the data. from ID given by className
             var button = (ImageButton)sender;
-            var idName = button.ClassId.Remove(0, 7); // keeping only the id
-            _ = DisplayAlert(string.Format("Delete:{0}", idName), "Delete button!", "Delete info");
+            var id = button.ClassId.Remove(0, 7); // keeping only the id for the drink service
+            _ = DisplayAlert(string.Format("Delete:{0}", id), "Delete button!", "Delete info");
+            DrinkService.DeleteDrink(Convert.ToInt32(id));
         }
     }
 }
