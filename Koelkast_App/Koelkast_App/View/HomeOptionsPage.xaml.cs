@@ -26,5 +26,9 @@ namespace Koelkast_App.View
         {
             await Navigation.PushAsync(new ListKindOfDrinkPage());
         }
+        private void BtnInventaris_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new DrinkInventoryListView());
+        }
     }
 }
