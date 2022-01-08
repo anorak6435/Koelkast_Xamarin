@@ -17,14 +17,14 @@ namespace Koelkast_App.View
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            lblMessage.Text = RootPage.msg;
+        }
+
         private async void AddKindOfDrink_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddKindOfDrinkPage());
-        }
-
-        private async void ListKindOfDrinks_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new ListKindOfDrinkPage());
         }
         private void BtnInventaris_Clicked(object sender, EventArgs e)
         {

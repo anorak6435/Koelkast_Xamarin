@@ -13,9 +13,13 @@ namespace Koelkast_App
     public partial class RootPage : ContentPage
     {
         public static bool closing = false;
+        public static Model.User loggedInUser; // Refered to by RootPage.loggedInUser
+        public static string msg; // the message given to the homescreen welcoming the new user
         public RootPage()
         {
             InitializeComponent();
+            // when first opening the app check if a user wants to be logged in automatically
+            (loggedInUser, msg) = Services.UserService.AutoLogin();
         }
 
         //hacky solution: when you come back from the HomePage will want to close the app

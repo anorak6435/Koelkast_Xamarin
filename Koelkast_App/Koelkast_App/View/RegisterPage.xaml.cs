@@ -17,53 +17,83 @@ namespace Koelkast_App
             InitializeComponent();
         }
 
+        // a message to inform user about valid user data.
+        private void WarningMessage(string msg)
+        {
+            lblRegisterMsg.TextColor = Color.Yellow;
+            lblRegisterMsg.Text = msg;
+        }
+
         private void RegistreerBtn_Clicked(object sender, EventArgs e)
         {
             //check that the data entered in the register form is correct.
-            //if (this.CheckNewUserData())
-            //{
-            //    // make a new user from the input in the forms
-            //    Model.User usr = this.BuildUser();
-            //    Navigation.PushAsync(new HomePage(usr));
-            //}
+            if (this.CheckNewUserData())
+            {
+                // make a new user from the input in the forms
+                // register this user inside the database
+                Model.User usr = this.BuildUser();
+                // log de nieuwe gebruiker in
+
+                (Model.User temp_usr, string msg) = Services.UserService.Login(usr.Name, usr.Password);
+                // if null. The user did something wrong
+                if (temp_usr == null)
+                {
+                    // give the message to the user
+                    WarningMessage(msg);
+                } else
+                {   // everything seems to have gone well.
+                    // return the Navigation.Pop
+                    RootPage.loggedInUser = temp_usr;
+                    Navigation.PopModalAsync();
+                }
+                // changes the pages title to reflect I am logged in
+                // this.Parent.Parent TabbedHomePage
+                // var tab = this.Parent.Parent as TabbedPage;
+                // tab.Children[2].Title = "ingelogd";
+
+            }
         }
 
         private Model.User BuildUser()
         {
-            // the new user is allowed by the rules we have on the register form
+            // the new user is allowed by the input rules on the register form
 
-            Model.User usr = new Model.User();
-            usr.Language = "NL"; // TODO: When handling multiple language requirements make it connected to the app variable like the DatabaseLocation string
-            usr.Balance = 0; // the balance of new users starts at 0
-            usr.Name = RegisterUserName.Text;
-            usr.Email = RegisterEmail.Text;
-            usr.Password = RegisterPassword.Text;
-            usr.ThemeColor = "#00ff00"; // TODO: Just like with the language property take the general setting the user has selected.
-
-
-            // insert the user object into the database
-            int ret_rows = -1;
-            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            // before inserting the user into the user table check if the user wants to be remembered
+            if (rememberMe.IsChecked)
             {
-                con.CreateTable<Model.User>();
-                ret_rows = con.Insert(usr);
+                // if so remove all remember references in the User Table
+                Services.UserService.ForgetEveryone();
             }
+            // if not, just continue with inserting the new user into the database
 
-            if (ret_rows <= 0)
-            {
-                _ = DisplayAlert("Error!", "Er is een fout opgetreden bij het toevoegen van de nieuwe gebruiker. Controleer uw informatie", "Okay");
-            }
+            (Model.User usr, string errMsg) = Services.UserService.Insert(RegisterUserName.Text, RegisterEmail.Text, RegisterPassword.Text, rememberMe.IsChecked);
+            
+
             return usr;
         }
 
         private bool CheckNewUserData()
         {
+            // Check all fields of the form are filled
+            if (string.IsNullOrEmpty(RegisterEmail.Text))
+            {
+                WarningMessage("Vul een email adres in!");
+                return false;
+            } else if (string.IsNullOrEmpty(RegisterUserName.Text))
+            {
+                WarningMessage("Vul een gebruikersnaam in!");
+                return false;
+            } else if (string.IsNullOrEmpty(RegisterPassword.Text) || string.IsNullOrEmpty(RegisterPasswordRepeat.Text))
+            {
+                WarningMessage("Vul je gekozen wachtwoord 2 keer in!");
+                return false;
+            }
             // Check that both passwords are the same
             string first_pass = RegisterPassword.Text;
             string second_pass = RegisterPasswordRepeat.Text;
             if (first_pass != second_pass)
             {
-                _ = DisplayAlert("Wachtwoord", "Het wachtwoord en het herhaalde wachtwoord verschillen. Typ wachtwoorden opnieuw!", "Okay");
+                WarningMessage("Het wachtwoord en het herhaalde wachtwoord verschillen!");
                 return false;
             }
 
@@ -76,24 +106,12 @@ namespace Koelkast_App
             }
             if (ret_count > 0)
             {
-                _ = DisplayAlert("Email", "Dit email adres is gebruikt voor een ander account!", "Verander email");
+                lblRegisterMsg.Text = "Dit email adres is gebruikt voor een ander account!";
                 return false;
             }
 
+            // If none of the checks failed new user data is valid
             return true;
-        }
-
-        private void DeveloperLogin_Clicked(object sender, EventArgs e)
-        {
-            Model.User usr = new Model.User();
-            usr.Language = "NL"; // TODO: When handling multiple language requirements make it connected to the app variable like the DatabaseLocation string
-            usr.Balance = 0; // the balance of new users starts at 0
-            usr.Name = "Stefan";
-            usr.Email = "stefan.beckers14@gmail.com";
-            usr.Password = "passworddata";
-            usr.ThemeColor = "#00ff00"; // TODO: Just like with the language property take the general setting the user has selected.
-
-            // Navigation.PushAsync(new HomePage(usr));
         }
     }
 }

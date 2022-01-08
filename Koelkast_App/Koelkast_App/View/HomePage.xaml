@@ -4,12 +4,13 @@
             xmlns:local="clr-namespace:Koelkast_App.View"
             x:Class="Koelkast_App.View.HomePage"
             BarBackgroundColor="{StaticResource BannerBackground}"
-            NavigationPage.HasBackButton="False">
+            NavigationPage.HasBackButton="False"
+            x:Name="TabbedHomePage">
     <NavigationPage.TitleView>
         <Label Text="Koelkast" HorizontalTextAlignment="Center" FontSize="36"/>
     </NavigationPage.TitleView>
     <!--Pages can be added as references or inline-->
     <local:HomeOptionsPage Title="Thuis" />
     <local:SettingsPage Title="Instellingen" />
-    <local:LoginPage Title="inloggen" />
+    <!--<local:LoginPage Title="inloggen" />-->
 </TabbedPage>

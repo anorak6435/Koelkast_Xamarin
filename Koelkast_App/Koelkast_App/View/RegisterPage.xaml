@@ -15,24 +15,25 @@
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
                     <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Email:" Grid.Row="0" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
-                <Entry x:Name="RegisterEmail" Placeholder="Email" Grid.Row="0" Grid.Column="1" Keyboard="Email"/>
-                <Label Text="Naam:" Grid.Row="1" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
-                <Entry x:Name="RegisterUserName" Placeholder="Gebruikersnaam" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Wachtwoord:" Grid.Row="2" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
-                <Entry x:Name="RegisterPassword" Placeholder="Wachtwoord" Grid.Row="2" Grid.Column="1" IsPassword="True"/>
+                <Label x:Name="lblRegisterMsg" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" FontSize="Subtitle"/>
+                <Label Text="Email:" Grid.Row="1" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
+                <Entry x:Name="RegisterEmail" Placeholder="Email" Grid.Row="1" Grid.Column="1" Keyboard="Email"/>
+                <Label Text="Naam:" Grid.Row="2" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
+                <Entry x:Name="RegisterUserName" Placeholder="Gebruikersnaam" Grid.Row="2" Grid.Column="1"/>
                 <Label Text="Wachtwoord:" Grid.Row="3" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
-                <Entry x:Name="RegisterPasswordRepeat" Placeholder="Opnieuw Wachtwoord" Grid.Row="3" Grid.Column="1" IsPassword="True"/>
-                <Label Margin="32, 0" Text="Onthoud mij" VerticalTextAlignment="Center" Grid.Row="4" Grid.Column="1"/>
-                <CheckBox x:Name="rememberMe" IsChecked="True" Grid.Row="4" Grid.Column="0"/>
+                <Entry x:Name="RegisterPassword" Placeholder="Wachtwoord" Grid.Row="3" Grid.Column="1" IsPassword="True"/>
+                <Label Text="Wachtwoord:" Grid.Row="4" Grid.Column="0" Style="{StaticResource MidEndEntry}"/>
+                <Entry x:Name="RegisterPasswordRepeat" Placeholder="Opnieuw Wachtwoord" Grid.Row="4" Grid.Column="1" IsPassword="True"/>
+                <Label Margin="32, 0" Text="Onthoud mij" VerticalTextAlignment="Center" Grid.Row="5" Grid.Column="1"/>
+                <CheckBox x:Name="rememberMe" IsChecked="True" Grid.Row="5" Grid.Column="0" HorizontalOptions="End"/>
             </Grid>
             <Button x:Name="RegistreerBtn" Text="Registreer" Clicked="RegistreerBtn_Clicked"/>
-            <Button x:Name="DeveloperLogin" Text="DeveloperLogin" Clicked="DeveloperLogin_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

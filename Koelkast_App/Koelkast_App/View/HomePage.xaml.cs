@@ -15,6 +15,16 @@ namespace Koelkast_App.View
         public HomePage()
         {
             InitializeComponent();
+            if (RootPage.loggedInUser != null)
+            {
+                TabbedHomePage.Children.Add(new UserProfilePage(this));
+                TabbedHomePage.Children[2].Title = "Profiel";
+            }
+            else
+            {
+                TabbedHomePage.Children.Add(new LoginPage(this));
+                TabbedHomePage.Children[2].Title = "inloggen";
+            }
         }
     }
 }
