@@ -16,5 +16,13 @@ namespace Koelkast_App.View
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            if (RootPage.loggedInUser != null)
+            {
+                TabbedHomePage.Children[2].Title = "ingelogd";
+            }
+        }
     }
 }

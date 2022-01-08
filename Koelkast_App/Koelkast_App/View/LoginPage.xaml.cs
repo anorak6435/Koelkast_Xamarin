@@ -57,5 +57,15 @@ namespace Koelkast_App.View
                 return true;
             }
         }
+
+        async private void btnRegister_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new RegisterPage(), true);
+        }
+
+        private void BtnLoggingIn_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

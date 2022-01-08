@@ -15,6 +15,8 @@ namespace Koelkast_App.Model
 
         public int UserId { get; set; }
 
+        public DateTime TakenOn { get; set; } // To Track when the drink was consumed
+
         public int Amount { get; set; }
     }
 }

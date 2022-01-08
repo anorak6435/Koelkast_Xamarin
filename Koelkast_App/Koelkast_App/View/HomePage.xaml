@@ -4,7 +4,8 @@
             xmlns:local="clr-namespace:Koelkast_App.View"
             x:Class="Koelkast_App.View.HomePage"
             BarBackgroundColor="{StaticResource BannerBackground}"
-            NavigationPage.HasBackButton="False">
+            NavigationPage.HasBackButton="False"
+            x:Name="TabbedHomePage">
     <NavigationPage.TitleView>
         <Label Text="Koelkast" HorizontalTextAlignment="Center" FontSize="36"/>
     </NavigationPage.TitleView>
