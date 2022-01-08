@@ -19,7 +19,7 @@ namespace Koelkast_App
         {
             InitializeComponent();
             // when first opening the app check if a user wants to be logged in automatically
-            (loggedInUser, msg) = Services.UserService.RememberMe();
+            (loggedInUser, msg) = Services.UserService.AutoLogin();
         }
 
         //hacky solution: when you come back from the HomePage will want to close the app
