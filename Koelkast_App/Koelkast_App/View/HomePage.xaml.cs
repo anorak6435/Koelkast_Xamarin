@@ -15,13 +15,15 @@ namespace Koelkast_App.View
         public HomePage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
             if (RootPage.loggedInUser != null)
             {
-                TabbedHomePage.Children[2].Title = "ingelogd";
+                TabbedHomePage.Children.Add(new UserProfilePage(this));
+                TabbedHomePage.Children[2].Title = "Profiel";
+            }
+            else
+            {
+                TabbedHomePage.Children.Add(new LoginPage(this));
+                TabbedHomePage.Children[2].Title = "inloggen";
             }
         }
     }

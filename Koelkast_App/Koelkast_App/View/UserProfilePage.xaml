@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Koelkast_App.View.UserProfilePage"
+             xmlns:local="clr-namespace:Koelkast_App">
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="10">
+            <Label AbsoluteLayout.LayoutBounds="0, 10"  Text="Mijn Profiel" FontSize="Title"/>
+
+            <Label x:Name="lblName" AbsoluteLayout.LayoutBounds="0, 50" Text="{Binding Source={Static local:RootPage.loggedInUser},
+                Path='Name',
+                StringFormat='Naam: {0}'}"/>
+
+            <Label x:Name="lblFavDrink" AbsoluteLayout.LayoutBounds="0, 75" 
+                Text="{Binding Source={Static local:RootPage.loggedInUser},
+                Path='FavoriteDrink',
+                StringFormat='Favoriete Drankje: {0}'}"/>
+
+            <Label x:Name="lblTotalDrinks" AbsoluteLayout.LayoutBounds="0, 100" Text="Totaal aantal drankjes: 0"/>
+
+            <Button x:Name="btnLogout" AbsoluteLayout.LayoutBounds="225, 150" Text="Uitloggen" Clicked="btnLogout_Clicked"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

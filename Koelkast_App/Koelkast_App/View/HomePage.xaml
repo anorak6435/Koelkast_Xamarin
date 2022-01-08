@@ -12,5 +12,5 @@
     <!--Pages can be added as references or inline-->
     <local:HomeOptionsPage Title="Thuis" />
     <local:SettingsPage Title="Instellingen" />
-    <local:LoginPage Title="inloggen" />
+    <!--<local:LoginPage Title="inloggen" />-->
 </TabbedPage>

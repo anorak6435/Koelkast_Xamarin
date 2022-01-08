@@ -42,7 +42,7 @@ namespace Koelkast_App.Services
         }
 
         // return the user that wanted to be remembered (An automatic login)
-        public static (Model.User, string) RememberMe()
+        public static (Model.User, string) AutoLogin()
         {
             List<Model.User> selection;
             using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
@@ -60,7 +60,20 @@ namespace Koelkast_App.Services
                 // send the user a friendly message welcoming him back
                 return (selection[0], "Welkom terug!");
             } // else nobody added a remember me so no nothing
-            return (null, "");
+            return (null, "Welkom gast!");
+        }
+
+        // the given user object will be remembered inside the database
+        public static void RememberMe(Model.User usr)
+        {
+            ForgetEveryone();
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.BeginTransaction();
+                usr.Remembered = true;
+                con.Update(usr);
+                con.Commit();
+            }
         }
 
         // when a different user wants to be remembered other users .Remembered = false
@@ -83,12 +96,6 @@ namespace Koelkast_App.Services
                     }
                     con.Commit();
                 }
-
-                List<Model.User> tempurs = con.Table<Model.User>().ToList();
-                //con.CreateTable<Model.User>();
-                //con.Table<Model.User>().Where(u => u.Remembered)
-                //    .ToList()
-                //    .ForEach(x => x.Remembered = false);
                 
             }
         }
