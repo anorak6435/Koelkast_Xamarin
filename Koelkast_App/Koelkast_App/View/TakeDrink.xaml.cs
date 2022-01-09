@@ -43,20 +43,23 @@ namespace Koelkast_App.View
             // if no user is logged in make sure you log in
             if (RootPage.loggedInUser == null)
             {   // return warning that someone has to be logged in to take a drink from the fridge
-                takeDrinkMsg.Text = "Login of registreer om een drankje de nemen!";
-            }
-
-            // add the number of drinks to the users balance
-            (bool Passed, string msgErr) = Services.ConsumptionService.TakeDrink(DrinkTaken, RootPage.loggedInUser, numberOfDrinks);
-
-            if (!Passed)
-            {
                 takeDrinkMsg.TextColor = Color.Yellow;
-                takeDrinkMsg.Text = msgErr;
+                takeDrinkMsg.Text = "Login of registreer om een drankje de nemen!";
             } else
             {
-                // return to the overview page
-                Navigation.PopModalAsync();
+                // add the number of drinks to the users balance
+                (bool Passed, string msgErr) = Services.ConsumptionService.TakeDrink(DrinkTaken, RootPage.loggedInUser, numberOfDrinks);
+
+                if (!Passed)
+                {
+                    takeDrinkMsg.TextColor = Color.Yellow;
+                    takeDrinkMsg.Text = msgErr;
+                }
+                else
+                {
+                    // return to the overview page
+                    Navigation.PopModalAsync();
+                }
             }
         }
     }
