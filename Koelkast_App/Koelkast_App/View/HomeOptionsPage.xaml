@@ -15,7 +15,7 @@
             <Label Text="Hier gaan de hoofdfuncties van de app komen."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <ImageButton Source="{local:ImageResource Koelkast_App.images.koelkast.png}" WidthRequest="100" HeightRequest="150" HorizontalOptions="End" BackgroundColor="Transparent"/>
+            <ImageButton x:Name="TakeDrink" Source="{local:ImageResource Koelkast_App.images.koelkast.png}" WidthRequest="100" HeightRequest="150" HorizontalOptions="End" BackgroundColor="Transparent" Clicked="TakeDrink_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

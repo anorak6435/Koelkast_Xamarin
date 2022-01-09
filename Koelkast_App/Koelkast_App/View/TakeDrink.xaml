@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Koelkast_App.View.TakeDrink">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label VerticalOptions="CenterAndExpand"/>
+            <Label Text="Neem drankje" FontSize="Title"
+                HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="takeDrinkMsg"/>
+            <Label Text="Welk soort drankje wens je?"/>
+            <Picker x:Name="pickKind" Title="Selecter een soort drank">
+            </Picker>
+            <Label Text="Aantal drankjes in koelkast"/>
+            <Label BindingContext="{x:Reference Name=Taken}"
+                Text="{Binding Path=Value,
+                StringFormat='Neemt {0} drankjes'}"
+                FontSize="Subtitle"/>
+            <Stepper x:Name="Taken" Minimum="1" Increment="1" HorizontalOptions="Center"/>
+            <Button x:Name="OutFridge" Text="Uit Koelkast" Clicked="OutFridge_Clicked" HorizontalOptions="End"/>
+            <Label VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

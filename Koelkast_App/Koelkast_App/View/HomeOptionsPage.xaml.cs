@@ -30,5 +30,10 @@ namespace Koelkast_App.View
         {
             Navigation.PushAsync(new DrinkInventoryListView());
         }
+
+        private void TakeDrink_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new TakeDrink(), true);
+        }
     }
 }

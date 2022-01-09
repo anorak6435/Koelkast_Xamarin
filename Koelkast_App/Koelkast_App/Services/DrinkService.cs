@@ -34,6 +34,50 @@ namespace Koelkast_App.Services
             return ins_rows;
         }
 
+        // update the amount of drinks of kind X inside the database / fridge
+        public static (bool, string) UpdateDrink(Model.Drink drink, Model.Consumption consumed)
+        {
+            // remove the consumed amount of the Instock amount on the drink
+            drink.InStock = drink.InStock - consumed.Amount;
+
+            int updates = -1;
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Model.Drink>();
+                con.BeginTransaction();
+                updates = con.Update(drink);
+                con.Commit();
+            }
+
+            if (updates == 1)
+            {
+                return (true, "");
+            } else
+            {
+                return (false, "Database fout bij Updaten aantal drankjes!");
+            }
+        }
+
+
+        // Make sure the user can find his drink by searching for the name
+        public static Model.Drink DrinkByName(string drinkName)
+        {
+            List<Model.Drink> drinks;
+            using (SQLiteConnection con = new SQLiteConnection(App.DatabaseLocation))
+            {
+                con.CreateTable<Model.Drink>();
+                drinks = con.Table<Model.Drink>().Where(x => x.Name == drinkName).ToList();
+            }
+
+            if (drinks.Count == 1)
+            {
+                return drinks[0];
+            } else
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Returns a list of all the drinks stored in the database.
         /// </summary>
